@@ -1,3 +1,7 @@
+if (typeof(PhusionPassenger) !== 'undefined') {
+    PhusionPassenger.configure({ autoInstall: false });
+}
+
 const express = require('express')
 const app = express()
 const mysql = require('mysql')
@@ -8,14 +12,16 @@ app.use(express.json())
 
 const db = mysql.createConnection({
     user: 'bofv3727_admin',
-    host: 'chvt.me',
+    host: 'localhost',
     password: 'a8K1#I3%66pR',
     database: 'bofv3727_medisource-db',
 })
 
-app.listen(3001, () => {
-    console.log('Server is running on port 3001')
-})
+if (typeof(PhusionPassenger) !== 'undefined') {
+    app.listen('passenger');
+} else {
+    app.listen(3000);
+}
 
 ////////////////////////////////////////            READ
 app.get('/systeme', (req, res) => {
