@@ -1,7 +1,3 @@
-if (typeof(PhusionPassenger) !== 'undefined') {
-    PhusionPassenger.configure({ autoInstall: false });
-}
-
 const express = require('express')
 const app = express()
 const mysql = require('mysql')
@@ -18,11 +14,19 @@ const db = mysql.createConnection({
     database: process.env.DB_DATABASE,
 })
 
-if (typeof(PhusionPassenger) !== 'undefined') {
-    app.listen('passenger');
-} else {
-    app.listen(3000);
-}
+// ---         APP IS LOCAL
+// if (typeof(PhusionPassenger) !== 'undefined') {
+//     PhusionPassenger.configure({ autoInstall: false });
+// }
+
+// if (typeof(PhusionPassenger) !== 'undefined') {
+//     app.listen('passenger');
+// } else {
+//     app.listen(3000);
+// }
+
+// ---         APP IS DISTANT
+app.listen(3001);
 
 ////////////////////////////////////////            READ
 app.get('/systeme', (req, res) => {
