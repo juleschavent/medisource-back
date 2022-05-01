@@ -27,6 +27,6 @@ jobs:
           server: pif.o2switch.net
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          dangerous-clean-slate: true
+          # dangerous-clean-slate: true
           # local-dir: ./build/
           server-dir: ./server-medisource.chvt.me/
