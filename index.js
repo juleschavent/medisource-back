@@ -16,10 +16,21 @@ const db = mysql.createConnection({
 app.listen(3001, () => {
     console.log('Server is running on port 3001')
 })
+
 ////////////////////////////////////////            READ
-// Test Query
 app.get('/systeme', (req, res) => {
     db.query(`SELECT * FROM systeme`,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                res.send(result)
+            }
+        })
+})
+
+app.get('/organe', (req, res) => {
+    db.query(`SELECT * FROM organe`,
         (err, result) => {
             if (err) {
                 console.log(err)
